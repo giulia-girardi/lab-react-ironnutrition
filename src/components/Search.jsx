@@ -1,0 +1,22 @@
+import { Divider, Input } from 'antd';
+
+function Search({query, setQuery}) {
+    
+    console.log('hello')
+    const handleChange = event => {
+        event.preventDefault()
+        setQuery(event.target.value)
+    }
+    
+    
+  return (
+    <>
+      <Divider>Search</Divider>
+
+      <label>Search</label>
+      <Input value={query} type="text" onChange={handleChange} />
+    </>
+  );
+}
+
+export default Search;

@@ -4,7 +4,7 @@ const uuid = require('uuid');
 // Iteration 2
 function FoodBox({food}) {
   return (
-    <Col key={(uuid.v4())}>
+    <Col>
       <Card
         title={food.name}
         style={{ width: 230, height: 300, margin: 10 }}
