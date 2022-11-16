@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import Toggle from './components/Toggle';
 import foodsJSON from './foods.json';
 import { useState } from 'react';
 import { Row, Divider, Button } from 'antd';
@@ -21,22 +20,25 @@ function App() {
     console.log('hello')
   }
 
+ 
+
   return (
     <div className="App">
-      <Toggle>
-          <AddFoodForm foods={foods} setFoods={setFoods} />
-      </Toggle>
+      <AddFoodForm foods={foods} setFoods={setFoods} />
       <Search query={query} setQuery={setQuery} />
       <Divider>Food List</Divider>
-      {foods
-        .filter((food)=> food.name.toLowerCase().includes(query.toLowerCase()))
-        .map((food)=> {
-        return (
-          <Row style={{ width: '100%', justifyContent: 'center' }}  key={(uuid.v4())}>
-            <FoodBox food={food} foods={foods} setFoods={setFoods} deleteItem={deleteItem}/>
-          </Row>
-        )
-      })}
+      {foods.length == 0 
+        ? <p>Ops! There is no content to show</p> 
+        : foods
+          .filter((food)=> food.name.toLowerCase().includes(query.toLowerCase()))
+          .map((food)=> {
+          return (
+            <Row style={{ width: '100%', justifyContent: 'center' }}  key={(uuid.v4())}>
+              <FoodBox food={food} foods={foods} setFoods={setFoods} deleteItem={deleteItem}/>
+            </Row>
+          )
+          }
+      )}
 
     </div>
   );
