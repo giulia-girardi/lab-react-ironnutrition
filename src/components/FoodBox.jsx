@@ -1,9 +1,10 @@
 import { Card, Col, Button } from 'antd';
+const uuid = require('uuid');
 
 // Iteration 2
 function FoodBox({food}) {
   return (
-    <Col>
+    <Col key={(uuid.v4())}>
       <Card
         title={food.name}
         style={{ width: 230, height: 300, margin: 10 }}
@@ -12,7 +13,7 @@ function FoodBox({food}) {
         <p>Calories: {food.calories}</p>
         <p>Servings: {food.servings}</p>
         <p>
-          <b>Total Calories: {food.calories} * {food.servings} </b> kcal
+          <b>Total Calories: {food.calories * food.servings}</b> kcal
         </p>
         <Button type="primary"> Delete </Button>
       </Card>
