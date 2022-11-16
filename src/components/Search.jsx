@@ -1,9 +1,7 @@
 import { Divider, Input } from 'antd';
 
 function Search({query, setQuery}) {
-    
-    console.log('hello')
-    const handleChange = event => {
+        const handleChange = event => {
         event.preventDefault()
         setQuery(event.target.value)
     }

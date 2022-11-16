@@ -12,6 +12,14 @@ const uuid = require('uuid');
 function App() {
   const [foods, setFoods] = useState(foodsJSON)
   const [query, setQuery] = useState('');
+  
+  const deleteItem = (name) => {
+    let copyFoods = [...foods]
+    let foodsWithoutDeleted = copyFoods.filter((item)=> item.name !== name)
+    setFoods(foodsWithoutDeleted)
+    console.log('hello')
+  }
+
   return (
     <div className="App">
       <AddFoodForm foods={foods} setFoods={setFoods}/>
@@ -22,7 +30,7 @@ function App() {
         .map((food)=> {
         return (
           <Row style={{ width: '100%', justifyContent: 'center' }}  key={(uuid.v4())}>
-            <FoodBox food={food} />
+            <FoodBox food={food} foods={foods} setFoods={setFoods} deleteItem={deleteItem}/>
           </Row>
         )
       })}
