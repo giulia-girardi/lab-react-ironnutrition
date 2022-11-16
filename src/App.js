@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Toggle from './components/Toggle';
 import foodsJSON from './foods.json';
 import { useState } from 'react';
 import { Row, Divider, Button } from 'antd';
@@ -8,10 +9,10 @@ import AddFoodForm from './components/AddFoodForm';
 import Search from './components/Search';
 const uuid = require('uuid');
 
-
 function App() {
   const [foods, setFoods] = useState(foodsJSON)
   const [query, setQuery] = useState('');
+
   
   const deleteItem = (name) => {
     let copyFoods = [...foods]
@@ -22,7 +23,9 @@ function App() {
 
   return (
     <div className="App">
-      <AddFoodForm foods={foods} setFoods={setFoods}/>
+      <Toggle>
+          <AddFoodForm foods={foods} setFoods={setFoods} />
+      </Toggle>
       <Search query={query} setQuery={setQuery} />
       <Divider>Food List</Divider>
       {foods
