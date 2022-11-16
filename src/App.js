@@ -3,7 +3,7 @@ import './App.css';
 import foodsJSON from './foods.json';
 import { useState } from 'react';
 import { Row, Divider, Button } from 'antd';
-
+import FoodBox from './components/FoodBox';
 
 function App() {
   const [foods, setFoods] = useState(foodsJSON)
@@ -18,6 +18,12 @@ function App() {
         </>
         )
       })}
+      <FoodBox food={ {
+        name: "Orange",
+        calories: 85,
+        image: "https://i.imgur.com/abKGOcv.jpg",
+        servings: 1
+      }} />
     </div>
   );
 }
